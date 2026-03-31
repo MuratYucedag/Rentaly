@@ -10,6 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<ICarService, CarManager>();
+builder.Services.AddScoped<ICarDal, EfCarDal>();
+
+builder.Services.AddScoped<IBranchService, BranchManager>();
+builder.Services.AddScoped<IBranchDal, EfBranchDal>();
+
 builder.Services.AddDbContext<RentalyContext>();
 
 builder.Services.AddControllersWithViews();

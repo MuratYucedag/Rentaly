@@ -1,4 +1,5 @@
 ﻿using Rentaly.BusinessLayer.Abstract;
+using Rentaly.DataAccessLayer.Abstract;
 using Rentaly.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,19 +11,22 @@ namespace Rentaly.BusinessLayer.Concrete
 {
     public class BranchManager : IBranchService
     {
+        private readonly IBranchDal _branchDal;
+        public BranchManager(IBranchDal branchDal)
+        {
+            _branchDal = branchDal;
+        }
         public Task TDeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
-
         public Task<Branch> TGetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
-
-        public Task<List<Branch>> TGetListAsync()
+        public async Task<List<Branch>> TGetListAsync()
         {
-            throw new NotImplementedException();
+            return await _branchDal.GetListAsync();
         }
 
         public Task TInsertAsync(Branch entity)
